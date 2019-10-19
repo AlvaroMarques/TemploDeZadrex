@@ -1,4 +1,4 @@
-## Olá, você está no repositório do grande e maravilhoso jogo Templo De Zadrex
+## Olá, você está no repositório do grande e maravilhoso jogo Templo De Zedrax
 
 Créditos Para:
 José Henrique Tobias Pereira 
