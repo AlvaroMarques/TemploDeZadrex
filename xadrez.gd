@@ -7,6 +7,9 @@ var eventMouse = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
+
+var ps = [-1, -1]
+var counter = 0
 func _input(event):
 	var abspos = 0
 	# Mouse in viewport coordinates
@@ -18,10 +21,17 @@ func _input(event):
 		abspos = ymat*8+xmat
 		eventMouse += 1
 	if eventMouse == 2:
-		print(abspos) 
+		print(abspos)
+		ps[counter] = abspos 
+		counter += 1
+		if counter == 2:
+			$HTTPRequest.request("http://127.0.0.1:8000/?pi=%d&pf=%d"%[ps[0], ps[1]])
+			counter = 0
 		eventMouse = 0
 		
-		
+func _on_HTTPRequest_request_completed( result, response_code, headers, body ):
+	
+	print(body.get_string_from_utf8())
 		
 		
 	
