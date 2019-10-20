@@ -2,6 +2,9 @@ import argparse
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from urllib.parse import parse_qs
 import json
+import chess
+BOARD_STR = str(chess.Board())
+del chess
 class S(BaseHTTPRequestHandler):
     def _set_headers(self):
         self.send_response(200)
@@ -20,7 +23,7 @@ class S(BaseHTTPRequestHandler):
         pi = int(dictget.get("pi",["-1"])[0])
         pf = int(dictget.get("pf",["-1"])[0])
         #response = str(makemove)
-        r = {"pi":int(pi), "pf":int(pf)}
+        r = {"pi":int(pi), "pf":int(pf), "tabuleiro": BOARD_STR}
         r = json.dumps(r)
         self.send_response(200)
         self.send_header("Content-type", "text/json")

@@ -31,8 +31,18 @@ func _input(event):
 		
 func _on_HTTPRequest_request_completed( result, response_code, headers, body ):
 	var json = JSON.parse(body.get_string_from_utf8())
-	
+	var tabuleiro = json.result["tabuleiro"]
+	var lista = PoolStringArray([])
+	var tabsp = tabuleiro.split("\n")
+	tabsp.invert()
+	for i in tabsp:
+		lista = lista +  i.split(" ")
+	var d = {}
+	for i in range(64):
+		if lista[i] != ".":
+			d[i] = lista[i]
 		
+	print(d)
 		
 	
    
