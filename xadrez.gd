@@ -65,14 +65,14 @@ func _input(event):
 		var ymat = abs(round((y-513)/64))
 		abspos = ymat*8+xmat
 		if eventMouse == 1:
-			if pieces.has(abspos):
-				initial = abspos
+			if pieces.has(int(abspos)):
+				initial = int(abspos)
 				eventMouse += 1
 		elif eventMouse == 2:
 			print(abspos) 
 			eventMouse += 1
 		elif eventMouse == 3:
-			final = abspos
+			final = int(abspos)
 			eventMouse += 1
 		elif eventMouse == 4:
 			pieces[final] = pieces[initial]
