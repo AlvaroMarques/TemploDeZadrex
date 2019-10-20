@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://BackgroundHistoria.gd" type="Script" id=1]
+[ext_resource path="res://chesslor.png" type="Texture" id=2]
+[ext_resource path="res://merespondevai.tres" type="DynamicFont" id=3]
+
+[node name="BackgroundHistoria" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 529.28, 300.144 )
+scale = Vector2( 1.22822, 1.16853 )
+texture = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 317.549
+margin_top = 92.7626
+margin_right = 1261.55
+margin_bottom = 349.763
+custom_fonts/font = ExtResource( 3 )
+text = "Em um mundo coberto pela escuridão, como desde a gênese 
+da Terra, existem duas dinastias inimigas que vivem em 
+profunda desavença; os reinos de Ocbran e dos Topre. 
+Houve várias guerras entre as famílias pelo trono e 
+pela posse do anel, que segundo dito popular, seria 
+“O anel para todos governar, para a todos trazer e na 
+escuridão aprisionar”. O anel se encontra dentro do 
+núcleo da Terra, comandando o universo. Criou-se, 
+então, a pedido dos anciões, um torneio de xadrez que 
+determinará o destino do mundo e qual dinastia comandará 
+o domínio da escuridão. O ganhador do jogo terá acesso
+ao interior da Mãe Gaia e a poderes ilimitados.
+"
+
+[node name="Button" type="Button" parent="."]
+margin_left = 714.728
+margin_top = 513.253
+margin_right = 799.728
+margin_bottom = 549.253
+text = "JOGAR"
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

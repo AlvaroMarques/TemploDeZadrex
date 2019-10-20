@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://chesslor.png" type="Texture" id=1]
+[ext_resource path="res://merespondevai.tres" type="DynamicFont" id=2]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 509.638, 299.311 )
+scale = Vector2( 1.16502, 1.16502 )
+texture = ExtResource( 1 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 314.677
+margin_top = 136.202
+margin_right = 758.677
+margin_bottom = 421.202
+custom_fonts/font = ExtResource( 2 )
+text = "BRANCAS:
+olá, querido perdedor, você foi pego pela escuridão. 
+Você ficará aprisionado no anel por 700 anos, até 
+que comece outro torneio.
+PRETAS:
+parabéns! Você dominará o mundo. Terá um exército 
+poderoso e construirá seu reino em cima da desgraça 
+de seus inimigos. Desfrute do poder do anel, 
+manipulando a todos ao seu redor.
+"

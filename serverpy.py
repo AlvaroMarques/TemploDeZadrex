@@ -21,6 +21,11 @@ class S(BaseHTTPRequestHandler):
         dictget = parse_qs(self.path[2:])
         pi = int(dictget.get("pi",["-1"])[0])
         pf = int(dictget.get("pf",["-1"])[0])
+        rei = int(dictget.get("rei",["0"])[0])
+        if rei == 1:
+            print("oi")
+            global j
+            j = Jogo()
         if (pi != -1 and pf != -1):
             try:
                 j.movimenta(pi, pf)

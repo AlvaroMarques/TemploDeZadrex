@@ -124,7 +124,7 @@ class Jogo:
         if('K' not in self.lsum([n.split() for n in aux.split("\n")[::-1]])):
             self.acabou =  2
     def retorno_final(self):
-        checkmate = 0
+        checkmate = "nao"
         if(self.acabou == 1):
             checkmate = "branco"
         if(self.acabou == 2):
