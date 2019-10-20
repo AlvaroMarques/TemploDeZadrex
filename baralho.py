@@ -56,12 +56,12 @@ class Piece:
     def atualizaBoard(self, board):
         self.board = board
 
-
 class Jogo:
     def __init__(self):
         self.vet = []
         self.comidos = []
         self.board = chess.Board()
+        self.acabou = 0
         for a in range(16):
             self.vet.append(Piece(self.board.piece_at(a), self.board))
             self.vet[a].set_ini(a)
@@ -77,6 +77,7 @@ class Jogo:
                 a += i
             return a
     def atualizaPosicao(self):
+#         print(self.board)
         aux = str(self.board.copy())
         k = self.lsum([n.split() for n in aux.split("\n")[::-1]])
 
@@ -86,38 +87,54 @@ class Jogo:
                 d[i] = peca
         a = 0
         for k in d:
+#             print(k)
+#             print(d[k])
             self.vet[a] = Piece(d[k], self.board)
             self.vet[a].set_ini(k)
             a = a+1
     def movimenta(self, ini, dest):
         k=0
+#         print("movimenta")
         for i in self.vet:
+            #print(i.get_ini())
             if(int(i.get_ini()) == (ini)):
+                #print(i.get_ini())
                 break
             k = k+1
-        
+        #print(k)
         self.vet[k].set_dest(dest)
+        #print(atual.piece)
         if(self.vet[k].temPeca()):
             self.comidos.append(str(self.vet[k].temPeca()))
             capturada = self.vet[k].temPeca()
             if capturada not in self.vet[k].piece:
                 self.vet[k].piece.append(str(capturada))
         self.vet[k].move()
-        self.atualizaPosicao()
-        for i in self.vet:
-            print(i.piece)
+        self.vet[k].set_ini(dest)
+        self.mate()
 
-
+        
+        
     def get_board(self):
         return self.board
+    def mate(self):
+        aux = str(self.board.copy())
+        if('k' not in self.lsum([n.split() for n in aux.split("\n")[::-1]])):
+            self.acabou =  1
+        if('K' not in self.lsum([n.split() for n in aux.split("\n")[::-1]])):
+            self.acabou =  2
+    def retorno_final(self):
+        checkmate = 0
+        if(self.acabou == 1):
+            checkmate = "branco"
+        if(self.acabou == 2):
+            checkmate = "preto"
+        dic = {
+            "board": str(self.board),
+            "check_mate": checkmate
+        }
+        return dic
+        
+        
 
-a = Jogo()
-a.movimenta(12, 28)
-a.movimenta(62,45)
-a.movimenta(28,36)
-a.movimenta(48,40)
-a.movimenta(36, 45)
-a.movimenta(40, 32)
-a.movimenta(45, 55)
-a.get_board()
 
