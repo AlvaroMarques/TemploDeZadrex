@@ -1,7 +1,7 @@
 import argparse
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from urllib.parse import parse_qs
-
+import json
 class S(BaseHTTPRequestHandler):
     def _set_headers(self):
         self.send_response(200)
@@ -21,15 +21,12 @@ class S(BaseHTTPRequestHandler):
         pf = int(dictget.get("pf",["-1"])[0])
         #response = str(makemove)
         r = {"pi":int(pi), "pf":int(pf)}
-        response =  "" 
-        for k in r.keys():
-            response += str(k)+" "+str(r[k])+"\n"
-
+        r = json.dumps(r)
         self.send_response(200)
         self.send_header("Content-type", "text/json")
-        self.send_header("Content-length", str(len(str(response))))
+        self.send_header("Content-length", len(r))
         self.end_headers()
-        self.wfile.write(self._html(str(response)))
+        self.wfile.write(self._html(r))
 
     def do_HEAD(self):
         self._set_headers()
