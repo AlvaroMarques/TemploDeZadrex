@@ -22,12 +22,6 @@ class S(BaseHTTPRequestHandler):
         dictget = parse_qs(self.path[2:])
         pi = int(dictget.get("pi",["-1"])[0])
         pf = int(dictget.get("pf",["-1"])[0])
-        #response = str(makemove)
-        BOARD_STR = str(board)
-        if (pi != -1 and pf != -1):
-            m = chess.Move(pi, pf)
-            board.push(m)
-            BOARD_STR = str(board)
         r = {"pi":int(pi), "pf":int(pf), "tabuleiro": BOARD_STR}
         r = json.dumps(r)
         self.send_response(200)
