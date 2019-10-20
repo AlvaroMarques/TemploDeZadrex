@@ -1,12 +1,13 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://xadrez.gd" type="Script" id=1]
-[ext_resource path="res://tabuleiro.png" type="Texture" id=2]
+[ext_resource path="res://sprite_00-1.png.png" type="Texture" id=2]
 
-[node name="Node2D" type="Node2D"]
+[node name="Tabuleiro" type="Node2D"]
+show_behind_parent = true
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
+show_behind_parent = true
 position = Vector2( 479.652, 288.448 )
-scale = Vector2( 0.419782, 0.429102 )
 texture = ExtResource( 2 )
